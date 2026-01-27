@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Page – Placeholder Build</title>
+  <style>
+    :root{
+      --navy:#B5121B;
+      --navy-2:#7A0B12;
+      --ink:#0b1220;
+      --muted:#5b6b82;
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --line:rgba(181,18,27,.18);
+      --radius:18px;
+      --radius-sm:14px;
+      --shadow: 0 10px 24px rgba(13,30,56,.08);
+      --shadow-soft: 0 6px 18px rgba(13,30,56,.06);
+      --max: 1180px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+
+    /* Header */
+    header{
+      background-color: var(--navy-2);
+      color:#fff;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand-text .name{
+      font-weight:700;
+      letter-spacing:.2px;
+      font-size:14px;
+    }
+    .brand-text .sub{
+      font-size:12px;
+      opacity:.85;
+    }
+    nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav-pill{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      font-size:13px;
+      opacity:.95;
+      transition:.15s ease;
+    }
+    .nav-pill:hover{ background:rgba(255,255,255,.10); }
+
+.logo{
+  width: auto;
+  height: auto;
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img{
+  height: 40px;   /* adjust 34–44 if needed */
+  width: auto;
+  display: block;
+}
+
+
+    /* Sections */
+    main{ padding:22px 0 58px; }
+    .section{
+      background:var(--card);
+      border: 2px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+      margin: 18px 0;
+    }
+    .section-inner{ padding:22px; }
+
+    /* Hero */
+
+
+    .hero{
+      background: linear-gradient(180deg, rgba(181,18,27,.07), rgba(255,255,255,1));
+      border: 2px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+      margin-top: 6px;
+    }
+    .hero-inner{
+      padding:28px 22px 22px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing:.2px;
+      color:var(--navy-2);
+    }
+    .hero p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.5;
+      max-width: 54ch;
+    }
+    .steps{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .step{
+      flex: 1 1 160px;
+      min-width:160px;
+      border-radius:var(--radius-sm);
+      border:1px solid var(--line);
+      padding:12px 12px;
+      background:#fff;
+    }
+    .step .k{
+      display:inline-block;
+      font-weight:800;
+      color:var(--navy);
+      font-size:12px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      margin-bottom: 6px;
+    }
+    .step .t{ font-weight:700; font-size:14px; margin-bottom: 3px; }
+    .step .d{ color:var(--muted); font-size:13px; line-height:1.35; }
+
+.hero-banner{
+  border-radius: var(--radius);
+  border: none;                /* REMOVE dotted lines */
+  background: transparent;     /* REMOVE placeholder background */
+  overflow: hidden;
+
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  min-height: 220px;
+}
+
+
+  /* KEY FIXES */
+  aspect-ratio: 2 / 1;     /* keeps your 1200x600 perfect */
+  width: 100%;
+  min-height: 220px;       /* fallback for older browsers */
+  padding: 0;              /* remove extra padding */
+  display: block;          /* remove grid centering */
+}
+
+.hero-banner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;/* fills the area nicely */
+  display: block;
+}
+
+
+    /* Info area */
+    .title-row{
+      padding: 18px 22px 0;
+      font-size: 22px;
+      font-weight: 900;
+      color:var(--navy-2);
+    }
+    .info-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+      padding: 16px 22px 22px;
+    }
+    .info-left{
+      border: 2px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      min-height: 120px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .info-left .lead{
+      margin:0;
+      color:var(--navy-2);
+      font-weight:800;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .info-left .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.5;
+    }
+
+    .info-right{
+      border: 2px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      display:grid;
+      gap:12px;
+      align-content:start;
+      background:#fff;
+    }
+    label{
+      display:block;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      color:rgba(122,11,18,.85);
+      margin-bottom:6px;
+    }
+    input{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(181,18,27,.25);
+      outline:none;
+      font-size:14px;
+      transition:.15s ease;
+      background:#fff;
+    }
+    input:focus{
+      border-color: rgba(181,18,27,.55);
+      box-shadow: 0 0 0 4px rgba(181,18,27,.10);
+    }
+    .row-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .hint{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height:1.45;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:6px;
+      padding-top:10px;
+      border-top: 1px solid rgba(181,18,27,.14);
+    }
+    .status .msg{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(181,18,27,.22);
+      background: rgba(181,18,27,.05);
+      color: var(--navy-2);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing:.2px;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .pill.good{ border-color: rgba(16,116,67,.30); background: rgba(16,116,67,.06); color:#0f6f41; }
+    .pill.bad{ border-color: rgba(175,34,51,.30); background: rgba(175,34,51,.06); color:#a71f32; }
+
+    /* Main page (revealed) */
+    #mainContent[hidden]{ display:none !important; }
+    .main-head{
+      padding: 18px 22px 8px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .main-head h2{
+      margin:0;
+      font-size: 28px;
+      font-weight: 950;
+      color: var(--navy-2);
+      letter-spacing:.2px;
+    }
+    .main-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      max-width: 62ch;
+      line-height:1.5;
+    }
+    .divider{
+      height:1px;
+      background: rgba(181,18,27,.14);
+      margin: 10px 22px 0;
+    }
+
+    /* Categories */
+    .categories{
+      padding: 18px 22px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .category{
+      border: 2px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+    .category-title{
+      margin: 2px 0 12px;
+      text-align:center;
+      font-size: 30px;
+      font-weight: 950;
+      color: var(--navy-2);
+      letter-spacing:.2px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top: 8px;
+    }
+    .card{
+      background: var(--navy);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      min-height: 190px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width: 160px; height:160px;
+      background: rgba(255,255,255,.06);
+      transform: rotate(20deg);
+      border-radius: 36px;
+      pointer-events:none;
+    }
+    .img-slot{
+      background: rgba(255,255,255,.08);
+      border: 2px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      min-height: 118px;
+      display:grid;
+      place-items:center;
+      color: rgba(255,255,255,.9);
+      font-weight:900;
+      letter-spacing:.4px;
+      text-align:center;
+      padding:10px;
+    }
+    .product-name{
+      margin-top: 10px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 14px;
+      padding: 8px 10px;
+      color: rgba(255,255,255,.95);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing:.2px;
+    }
+
+    .right-pane{
+      background: rgba(255,255,255,.08);
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 10px 10px 12px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .tier{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      color:#fff;
+      font-weight:950;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+    .desc{
+      color: rgba(255,255,255,.86);
+      font-size: 12.5px;
+      line-height: 1.4;
+      margin: 0;
+      min-height: 34px;
+    }
+    .qty-row{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .qty-row input{
+      padding:10px 10px;
+      border-radius:12px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      width: 100px;
+    }
+    .qty-row input::placeholder{ color: rgba(255,255,255,.70); }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top: 4px;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      letter-spacing:.2px;
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background:#fff;
+      color: var(--navy-2);
+    }
+    .btn.primary:hover{ transform: translateY(-1px); }
+    .link{
+      color: rgba(255,255,255,.90);
+      font-size: 12.5px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      opacity:.95;
+      cursor:pointer;
+      user-select:none;
+    }
+
+/* Main Page Teaser (locked preview) */
+.teaser-wrap{
+  padding: 18px 22px 22px;
+}
+
+.teaser{
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.teaser-inner{
+  padding: 18px 18px 16px;
+}
+
+.teaser h2{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 950;
+  color: var(--navy-2);
+  letter-spacing: .2px;
+}
+
+.teaser p{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+  max-width: 70ch;
+}
+
+.teaser .fake-cards{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 0 18px 18px;
+}
+
+.teaser .fake-card{
+  border-radius: 18px;
+  border: 2px solid var(--line);
+  background: rgba(181,18,27,.03);
+  min-height: 120px;
+}
+
+/* Locked effect */
+.teaser.is-locked{
+  pointer-events: none;
+  user-select: none;
+}
+.teaser.is-locked .teaser-inner,
+.teaser.is-locked .fake-cards{
+  filter: blur(5px);
+  opacity: .55;
+  transform: translateY(0);
+}
+
+/* Overlay label */
+.teaser .overlay{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+}
+.teaser .overlay .overlay-card{
+  max-width: 560px;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(181,18,27,.22);
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(6px);
+  padding: 14px 14px;
+  box-shadow: var(--shadow-soft);
+}
+.teaser .overlay .overlay-title{
+  font-weight: 950;
+  color: var(--navy-2);
+  margin: 0 0 6px;
+}
+.teaser .overlay .overlay-text{
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+/* When unlocked, hide overlay */
+.teaser:not(.is-locked) .overlay{
+  display: none;
+}
+
+@media (max-width: 980px){
+  .teaser .fake-cards{ grid-template-columns: 1fr; }
+}
+
+    /* Footer */
+    footer{
+      margin-top: 28px;
+      color: rgba(122,11,18,.65);
+      font-size: 12.5px;
+      text-align:center;
+      padding: 18px 0 26px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .info-grid{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .card{ grid-template-columns: 1fr; }
+      .right-pane{ min-height: 140px; }
+      nav{ display:none; } /* optional: keep clean on smaller screens */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="logo">
+  <img src="images/logo.png" alt="Company Logo">
+</div>
+
+
+        </div>
+        <nav aria-label="Primary">
+          <a class="nav-pill" href="#how">How It Works</a>
+          <a class="nav-pill" href="#info">Info</a>
+          <a class="nav-pill" href="#categories">Categories</a>
+
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- HERO -->
+      <section class="hero" id="how">
+        <div class="hero-inner">
+          <div>
+            <h1>Placeholder Headline</h1>
+            <p>
+              This landing page is designed to be informational and functional,
+              guiding users through a simple 1–2–3 process.
+            </p>
+
+            <div class="steps" aria-label="How it works steps">
+              <div class="step">
+                <div class="k">Step 1</div>
+                <div class="t">Tell us about you</div>
+                <div class="d">Fill out the info area to unlock product options.</div>
+              </div>
+              <div class="step">
+                <div class="k">Step 2</div>
+                <div class="t">Browse categories</div>
+                <div class="d">10 categories, each with Good / Better / Best.</div>
+              </div>
+              <div class="step">
+                <div class="k">Step 3</div>
+                <div class="t">Select items</div>
+                <div class="d">Choose options and quantities (placeholder for now).</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-banner" aria-label="Hero banner placeholder">
+<div class="hero-banner" aria-label="Hero banner">
+  <img src="images/hero-banner.png" alt="Hero banner">
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+<!-- INFORMATION AREA -->
+<section class="section" id="info">
+  <div class="section-inner">
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <div style="font-size:22px; font-weight:900; color:var(--navy-2);">
+        Tell Us About You
+      </div>
+      <div style="color:var(--muted); font-size:13.5px; line-height:1.45;">
+        Provide the details below to start choosing from the product options for your needs.
+      </div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="info-right" aria-label="Information form">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Placeholder name" autocomplete="name" />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Placeholder email" autocomplete="email" />
+        </div>
+
+        <div>
+          <label for="location">Location</label>
+          <input id="location" name="location" type="text" placeholder="Placeholder location" autocomplete="address-level2" />
+          <p class="hint">Example: City, State / Province</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MAIN PAGE (Teaser locks/unlocks) -->
+<section class="section" id="mainContent">
+  <div class="teaser-wrap">
+    <div class="teaser is-locked" id="mainTeaser">
+      <div class="teaser-inner">
+        <h2>Main Page Title (Placeholder)</h2>
+        <p>(Placeholder) Each category includes three options — Good, Better, and Best — so you can quickly compare and choose.</p>
+      </div>
+
+
+
+      <!-- Overlay message while locked -->
+      <div class="overlay" aria-hidden="true">
+<div class="overlay-card">
+  <p class="overlay-text">
+    Once your Name, Email, and Location are filled out, you can browse the full product categories.
+  </p>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Real categories area (still present, but hidden until unlocked) -->
+    <div id="categoriesWrap" style="margin-top:16px;" hidden>
+      <div class="divider"></div>
+      <div class="categories" id="categories" aria-label="Product categories"></div>
+    </div>
+  </div>
+</section>
+
+
+
+      <footer>
+        Placeholder footer — © <span id="year"></span> Your Company / Program Name
+      </footer>
+
+    </div>
+  </main>
+
+<script>
+  // -------------------------
+  // CONFIG (Placeholders)
+  // -------------------------
+  const CATEGORIES = [
+    { title: "Category 1 (Placeholder)" },
+    { title: "Category 2 (Placeholder)" },
+    { title: "Category 3 (Placeholder)" },
+    { title: "Category 4 (Placeholder)" },
+    { title: "Category 5 (Placeholder)" },
+    { title: "Category 6 (Placeholder)" },
+    { title: "Category 7 (Placeholder)" },
+    { title: "Category 8 (Placeholder)" },
+    { title: "Category 9 (Placeholder)" },
+    { title: "Category 10 (Placeholder)" }
+  ];
+
+  const TIERS = [
+    { key: "Good",   desc: "Short description placeholder (Good)." },
+    { key: "Better", desc: "Short description placeholder (Better)." },
+    { key: "Best",   desc: "Short description placeholder (Best)." }
+  ];
+
+  // -------------------------
+  // HELPERS
+  // -------------------------
+  const $ = (id) => document.getElementById(id);
+
+  function isValidEmail(v){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
+  }
+
+  function isFilled(){
+    const name = ($("name")?.value || "").trim();
+    const email = ($("email")?.value || "").trim();
+    const loc  = ($("location")?.value || "").trim();
+    return name.length > 0 && isValidEmail(email) && loc.length > 0;
+  }
+
+  // ✅ SINGLE correct lock/unlock controller
+  function setLockedUI(locked){
+    const teaser = $("mainTeaser");
+    const categoriesWrap = $("categoriesWrap");
+
+    if(!teaser || !categoriesWrap) return;
+
+    if(locked){
+      teaser.classList.add("is-locked");
+      categoriesWrap.hidden = true;
+    }else{
+      teaser.classList.remove("is-locked");
+      categoriesWrap.hidden = false;
+    }
+  }
+
+  function renderCategories(){
+    const container = $("categories");
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    CATEGORIES.forEach((cat, idx) => {
+      const catEl = document.createElement("div");
+      catEl.className = "category";
+
+      const title = document.createElement("div");
+      title.className = "category-title";
+      title.textContent = cat.title;
+      catEl.appendChild(title);
+
+      const cards = document.createElement("div");
+      cards.className = "cards";
+
+      TIERS.forEach((tier) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-category", String(idx + 1));
+        card.setAttribute("data-tier", tier.key);
+
+        const left = document.createElement("div");
+
+        const img = document.createElement("div");
+        img.className = "img-slot";
+        img.innerHTML = `Product Image<br/><span style="font-weight:800; opacity:.85; font-size:12px;">(placeholder)</span>`;
+        left.appendChild(img);
+
+        const pname = document.createElement("div");
+        pname.className = "product-name";
+        pname.textContent = "Product Name (Placeholder)";
+        left.appendChild(pname);
+
+        const right = document.createElement("div");
+        right.className = "right-pane";
+
+        const tierRow = document.createElement("div");
+        tierRow.className = "tier";
+        tierRow.innerHTML = `<span>${tier.key}</span><span style="opacity:.85;">Option</span>`;
+        right.appendChild(tierRow);
+
+        const desc = document.createElement("p");
+        desc.className = "desc";
+        desc.textContent = tier.desc;
+        right.appendChild(desc);
+
+        const qtyRow = document.createElement("div");
+        qtyRow.className = "qty-row";
+        const qtyInput = document.createElement("input");
+        qtyInput.type = "number";
+        qtyInput.min = "0";
+        qtyInput.placeholder = "Quantity";
+        qtyInput.setAttribute("aria-label", "Quantity");
+        qtyRow.appendChild(qtyInput);
+        right.appendChild(qtyRow);
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const btn = document.createElement("button");
+        btn.className = "btn primary";
+        btn.type = "button";
+        btn.textContent = "Select";
+        btn.addEventListener("click", () => {
+          alert(`Selected (placeholder): ${cat.title} → ${tier.key}`);
+        });
+
+        const link = document.createElement("span");
+        link.className = "link";
+        link.textContent = "View Details";
+        link.addEventListener("click", () => {
+          alert(`View Details (placeholder): ${cat.title} → ${tier.key}`);
+        });
+
+        actions.appendChild(btn);
+        actions.appendChild(link);
+        right.appendChild(actions);
+
+        card.appendChild(left);
+        card.appendChild(right);
+        cards.appendChild(card);
+      });
+
+      catEl.appendChild(cards);
+      container.appendChild(catEl);
+    });
+  }
+
+  function onFormChange(){
+    setLockedUI(!isFilled());
+  }
+
+  // -------------------------
+  // INIT
+  // -------------------------
+  document.addEventListener("DOMContentLoaded", () => {
+    const yearEl = $("year");
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+    renderCategories();
+
+    // ✅ Run once on load so filled fields unlock immediately
+    onFormChange();
+
+    ["name","email","location"].forEach(id => {
+      const el = $(id);
+      if(!el) return;
+      ["input","blur","change"].forEach(evt => el.addEventListener(evt, onFormChange));
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
