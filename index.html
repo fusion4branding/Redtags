@@ -173,14 +173,24 @@
 
 .hero-banner{
   border-radius: var(--radius);
-  border: none;                /* REMOVE dotted lines */
-  background: transparent;     /* REMOVE placeholder background */
   overflow: hidden;
-
-  aspect-ratio: 2 / 1;
+  background: #fff;              /* gives a clean backdrop */
+  aspect-ratio: 2 / 1;           /* keep your layout shape */
   width: 100%;
   min-height: 220px;
+  display:flex;                  /* centers the image */
+  align-items:center;
+  justify-content:center;
 }
+
+.hero-banner img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* ✅ shows full image */
+  object-position: center;
+  display: block;
+}
+
 
 
   /* KEY FIXES */
